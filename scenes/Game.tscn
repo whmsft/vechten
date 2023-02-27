@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/player_idle.png" type="Texture" id=1]
+[ext_resource path="res://assets/player_move.png" type="Texture" id=2]
+[ext_resource path="res://assets/player_huff.png" type="Texture" id=3]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=4]
+[ext_resource path="res://assets/arrow.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "idle",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "walk",
+"speed": 8.0
+} ]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Player" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "walk"
+playing = true
+centered = false
+
+[node name="btn_left" type="TextureButton" parent="."]
+margin_left = 1.0
+margin_top = 71.0
+margin_right = 9.0
+margin_bottom = 79.0
+action_mode = 0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+
+[node name="btn_right" type="TextureButton" parent="."]
+margin_left = 10.0
+margin_top = 71.0
+margin_right = 18.0
+margin_bottom = 79.0
+action_mode = 0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+flip_h = true
