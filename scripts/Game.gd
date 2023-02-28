@@ -2,7 +2,7 @@
 ## Name: vechten   ##
 ## Author: @whmsft ##
 ## version: v0b1   ##
-## commit: 11      ##
+## commit: 12      ##
 #####################
 
 extends Node2D
@@ -33,8 +33,8 @@ func _process(_delta):
 
 func update_player(_delta):
 	var old_position = $Player.position 
-	if Input.is_action_pressed("key_left") or $btn_left.pressed: $Player.position.x += -256*_delta
-	elif Input.is_action_pressed("key_right") or $btn_right.pressed: $Player.position.x += +256*_delta
+	if Input.is_action_pressed("key_left") or $btn_left.pressed: $Player.position.x += -192*_delta
+	elif Input.is_action_pressed("key_right") or $btn_right.pressed: $Player.position.x += +192*_delta
 	if old_position.x != $Player.position.x: $Player.animation = "walk"
 	elif Input.is_action_pressed("key_space") or $btn_fire.pressed: $Player.animation = "fire"
 	else: $Player.animation = "idle"

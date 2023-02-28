@@ -30,6 +30,7 @@ window/stretch/aspect="keep_width"
 [global]
 
 fps=false
+mouse=false
 
 [gui]
 
@@ -81,11 +82,6 @@ key_space={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
-
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
-pointing/emulate_mouse_from_touch=false
 
 [physics]
 

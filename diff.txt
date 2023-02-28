@@ -1,10 +1,7 @@
 ﻿This file houses changes made on the latest commit.
 
-1. A huge rework using the handy "_delta" variable
-2. Rework to speed of stuffs
-4. Added a "FPS" variable (viz. of no use!)
-5. Fixed issues with speed on android. (possibily)
-6. Added screenshot (screenplay?)
+1. Updated project settings that does not let you.
+2. Slowed down speed to x0.75.
 
 Guess the song!
 🎶 You're the drug that I'm addicted to
