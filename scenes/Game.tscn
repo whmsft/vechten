@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/player_idle.png" type="Texture" id=1]
 [ext_resource path="res://assets/player_move.png" type="Texture" id=2]
@@ -8,9 +8,16 @@
 [ext_resource path="res://assets/bullet0.png" type="Texture" id=6]
 [ext_resource path="res://assets/fire.png" type="Texture" id=7]
 [ext_resource path="res://assets/bullet1.png" type="Texture" id=8]
+[ext_resource path="res://assets/player_fire.png" type="Texture" id=9]
+[ext_resource path="res://assets/pixel.ttf" type="DynamicFontData" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "fire",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 3 ), ExtResource( 1 ) ],
 "loop": true,
 "name": "idle",
@@ -30,38 +37,41 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFont" id=5]
+size = 8
+font_data = ExtResource( 10 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 5 )
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="Player" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "walk"
-frame = 1
+animation = "fire"
 playing = true
 centered = false
 
 [node name="Bullet" type="AnimatedSprite" parent="."]
-position = Vector2( 5, 5 )
+position = Vector2( 4, 4 )
 scale = Vector2( 0.875, 1 )
 frames = SubResource( 2 )
 animation = "bullet_fire"
+frame = 1
 playing = true
 
 [node name="btn_left" type="TextureButton" parent="."]
-margin_left = 1.0
-margin_top = 71.0
-margin_right = 9.0
-margin_bottom = 79.0
+margin_right = 8.0
+margin_bottom = 8.0
 action_mode = 0
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 5 )
 
 [node name="btn_right" type="TextureButton" parent="."]
-margin_left = 10.0
-margin_top = 71.0
-margin_right = 18.0
-margin_bottom = 79.0
+margin_right = 8.0
+margin_bottom = 8.0
 action_mode = 0
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 5 )
@@ -69,10 +79,19 @@ texture_hover = ExtResource( 5 )
 flip_h = true
 
 [node name="btn_fire" type="TextureButton" parent="."]
-margin_left = 31.0
-margin_top = 71.0
-margin_right = 39.0
-margin_bottom = 79.0
+margin_right = 8.0
+margin_bottom = 8.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 30.0
+margin_bottom = 6.0
+theme = SubResource( 3 )
+text = "FPS: "
+
+[node name="bullet_timer" type="Timer" parent="."]
+wait_time = 0.5
