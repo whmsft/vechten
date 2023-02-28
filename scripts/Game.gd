@@ -1,5 +1,4 @@
 extends Node2D
-export var INTERNAL = {"width": 40, "height": 80}
 var frame = 0
 var Mouse = Vector2()
 var bullets = []
@@ -32,5 +31,8 @@ func update_bullet():
 		bullets[-1].show()
 		add_child(bullets[-1])
 	for n in bullets:
-		if n.position.y < 8: bullets.erase(n)
+		n.play()
+		if n.position.y < 8:
+			bullets.erase(n)
+			n.queue_free()
 		n.position = Vector2(n.position.x, n.position.y-2.5)

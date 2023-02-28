@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/player_idle.png" type="Texture" id=1]
 [ext_resource path="res://assets/player_move.png" type="Texture" id=2]
 [ext_resource path="res://assets/player_huff.png" type="Texture" id=3]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=4]
 [ext_resource path="res://assets/arrow.png" type="Texture" id=5]
-[ext_resource path="res://assets/bullet.png" type="Texture" id=6]
+[ext_resource path="res://assets/bullet0.png" type="Texture" id=6]
 [ext_resource path="res://assets/fire.png" type="Texture" id=7]
+[ext_resource path="res://assets/bullet1.png" type="Texture" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -23,7 +24,7 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "bullet_fire",
 "speed": 5.0
@@ -35,6 +36,7 @@ script = ExtResource( 4 )
 [node name="Player" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "walk"
+frame = 1
 playing = true
 centered = false
 
@@ -43,6 +45,7 @@ position = Vector2( 5, 5 )
 scale = Vector2( 0.875, 1 )
 frames = SubResource( 2 )
 animation = "bullet_fire"
+playing = true
 
 [node name="btn_left" type="TextureButton" parent="."]
 margin_left = 1.0
