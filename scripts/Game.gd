@@ -2,7 +2,7 @@
 ## Name: vechten   ##
 ## Author: @whmsft ##
 ## version: v0b1   ##
-## commit: 17      ##
+## commit: 18      ##
 #####################
 
 extends Node2D
@@ -23,13 +23,27 @@ func _ready():
 	$Player.position = Vector2(16, SCREEN.y -18)
 	$Player.play()
 	$Bullet.hide()
+	$Enemy.position = Vector2(16, 8)
 
 func _process(_delta):
 	FPS = Engine.get_frames_per_second()
 	$FPS_label.text = "FPS:"+str(FPS)
 	MOUSE = get_global_mouse_position()
 	update_player(_delta)
+	enemy_works(_delta)
 	update_bullet(_delta)
+
+func enemy_works(_delta):
+	var p = $Player.position
+	var e = $Enemy.position
+	if e.x < -4 : e.x = 36
+	elif e.x > 36: e.x = -4
+	var d = Vector2(p.x - e.x, p.y - e.y)
+	var h = sqrt(d.x*d.x+d.y*d.y)
+	d.x /= h
+	d.y /= h
+	e.x += d.x*(192*_delta)
+	$Enemy.position.x = e.x
 
 func update_player(_delta):
 	var old_position = $Player.position 
@@ -39,8 +53,8 @@ func update_player(_delta):
 	elif Input.is_action_pressed("key_space") or $btn_fire.is_pressed(): $Player.animation = "fire"
 	else: $Player.animation = "idle"
 	$Player.flip_h = bool($Player.position.x-old_position.x < 0)
-	if $Player.position.x < -4 : $Player.position.x = 48
-	elif $Player.position.x > 48: $Player.position.x = -4
+	if $Player.position.x < -4 : $Player.position.x = 36
+	elif $Player.position.x > 36: $Player.position.x = -4
 	
 func update_bullet(_delta):
 	if (Input.is_action_pressed("key_space") or $btn_fire.is_pressed()):
