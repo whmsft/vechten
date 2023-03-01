@@ -2,7 +2,7 @@
 ## Name: vechten   ##
 ## Author: @whmsft ##
 ## version: v0b1   ##
-## commit: 15      ##
+## commit: 16      ##
 #####################
 
 extends Node2D
@@ -49,11 +49,13 @@ func update_bullet(_delta):
 			timer -= timer_limit
 			bullets.append($Bullet.duplicate())
 			bullets[-1].position = Vector2($Player.position.x, $Player.position.y)
+			bullets[-1].animation = "fire"
 			bullets[-1].show()
+			bullets[-1].play()
 			add_child(bullets[-1])
 	for n in bullets:
-		n.play()
-		if n.position.y < 8:
+		n.position = Vector2(n.position.x, n.position.y-128*_delta)
+		if n.position.y < 8: n.animation = "boom"
+		if n.position.y < 0:
 			bullets.erase(n)
 			n.queue_free()
-		n.position = Vector2(n.position.x, n.position.y-128*_delta)

@@ -1,7 +1,9 @@
 ﻿This file houses changes made on the latest commit.
 
-1. Added New Banner which only works on android
+1. Added "BOOM!" animation to bullet. (buggy)
+2. A little tweaks...
 
 Guess the song!
-🎶 Sing me to sleep... Oh! Just sing me to sleep... 🎶
+🎶 When it all falls down, when it all falls down (x2)
+I'll be fine... I'll be fine... 🎶
 ** Don't copyright me, Dear >>AW<< :-)
