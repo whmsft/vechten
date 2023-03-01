@@ -1,9 +1,7 @@
 ﻿This file houses changes made on the latest commit.
 
-1. Updated project settings that does not let you.
-2. Slowed down speed to x0.75.
+1. Change all buttons into TouchScreenButtons
 
 Guess the song!
-🎶 You're the drug that I'm addicted to
-And I want you so bad  🎶
-** Don't copyright me, Dear >>AW<< :-)
+🎶 Run like a champion and win like a king! 🎶
+** Don't copyright me, Dear >>FIFA<< :-)
