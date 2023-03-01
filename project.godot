@@ -13,7 +13,8 @@ config_version=4
 config/name="vechten"
 config/description="A Simple 2D action shooter set on space"
 run/main_scene="res://scenes/Game.tscn"
-boot_splash/image="res://icons/icon_512.png"
+boot_splash/image="res://icons/banner.png"
+boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icons/icon_512.png"
 
@@ -30,7 +31,6 @@ window/stretch/aspect="keep_width"
 [global]
 
 fps=false
-mouse=false
 
 [gui]
 

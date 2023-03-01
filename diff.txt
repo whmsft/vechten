@@ -1,7 +1,7 @@
 ﻿This file houses changes made on the latest commit.
 
-1. Change all buttons into TouchScreenButtons
+1. Added New Banner which only works on android
 
 Guess the song!
-🎶 Run like a champion and win like a king! 🎶
-** Don't copyright me, Dear >>FIFA<< :-)
+🎶 Sing me to sleep... Oh! Just sing me to sleep... 🎶
+** Don't copyright me, Dear >>AW<< :-)

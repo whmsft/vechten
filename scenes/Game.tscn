@@ -68,7 +68,7 @@ margin_top = 1.0
 margin_right = 30.0
 margin_bottom = 6.0
 theme = SubResource( 3 )
-text = "FPS: "
+text = "FPS:"
 
 [node name="btn_left" type="TouchScreenButton" parent="."]
 normal = ExtResource( 5 )
