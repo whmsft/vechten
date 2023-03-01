@@ -2,6 +2,7 @@
 
 1. Added "BOOM!" animation to bullet. (buggy)
 2. A little tweaks...
+3. readme.md funny mistake
 
 Guess the song!
 🎶 When it all falls down, when it all falls down (x2)
