@@ -1,8 +1,8 @@
 #####################
 ## Name: vechten   ##
 ## Author: @whmsft ##
-## version: v1b1   ##
-## commit: 19      ##
+## version: v1b2   ##
+## commit: 20      ##
 #####################
 
 extends Node2D

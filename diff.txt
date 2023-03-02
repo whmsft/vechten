@@ -1,7 +1,6 @@
 ﻿This file houses changes made on the latest commit.
 
-1. Final update to enemy movement for now...
-2. Last time just forgot to add enemy assets to repo
+1. A lot of changes to README.md
 
 Guess the song!
 🎶 In the dark of night, the stars light up the sky... 🎶
