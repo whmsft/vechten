@@ -1,10 +1,8 @@
 ﻿This file houses changes made on the latest commit.
 
-1. Added Enemy!!
-2. A little bit of enemy logic (A subject to change)
-3. some bug fixes here & there...
+1. Final update to enemy movement for now...
+2. Last time just forgot to add enemy assets to repo
 
 Guess the song!
-🎶 When it all falls down, when it all falls down (x2)
-I'll be fine... I'll be fine... 🎶
-** Don't copyright me, Dear >>AW<< :-)
+🎶 In the dark of night, the stars light up the sky... 🎶
+** Don't copyright me, Dear >>AW/W41K3R5<< :)

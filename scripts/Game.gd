@@ -1,8 +1,8 @@
 #####################
 ## Name: vechten   ##
 ## Author: @whmsft ##
-## version: v0b1   ##
-## commit: 18      ##
+## version: v1b1   ##
+## commit: 19      ##
 #####################
 
 extends Node2D
@@ -13,6 +13,7 @@ var bullets = []
 
 var timer = 0
 var timer_limit = 0.2
+var framer = [0,0]
 
 func _ready():
 	SCREEN.x = get_viewport().get_visible_rect().size.x
@@ -34,15 +35,22 @@ func _process(_delta):
 	update_bullet(_delta)
 
 func enemy_works(_delta):
-	var p = $Player.position
+	if framer[0] > [241,181,121][randi()%3]:
+		framer[0] = 0
+		framer[1] = (randi() %3)
+	else: framer[0] += 1
 	var e = $Enemy.position
 	if e.x < -4 : e.x = 36
 	elif e.x > 36: e.x = -4
+	"""
 	var d = Vector2(p.x - e.x, p.y - e.y)
 	var h = sqrt(d.x*d.x+d.y*d.y)
 	d.x /= h
 	d.y /= h
-	e.x += d.x*(192*_delta)
+	"""
+	if framer[1] == 0: e.x += -96*_delta
+	elif framer[1] == 1: e.x += +96*_delta
+	elif framer[1] == 2: e.x += 0
 	$Enemy.position.x = e.x
 
 func update_player(_delta):
