@@ -1,8 +1,8 @@
 #####################
 ## Name: vechten   ##
 ## Author: @whmsft ##
-## version: v1b2   ##
-## commit: 20      ##
+## version: v1b3   ##
+## commit: 21      ##
 #####################
 
 extends Node2D
@@ -24,7 +24,8 @@ func _ready():
 	$Player.position = Vector2(16, SCREEN.y -18)
 	$Player.play()
 	$Bullet.hide()
-	$Enemy.position = Vector2(16, 8)
+	$Enemy.position = Vector2(16, 4)
+	$Enemy.play()
 
 func _process(_delta):
 	FPS = Engine.get_frames_per_second()
@@ -35,22 +36,16 @@ func _process(_delta):
 	update_bullet(_delta)
 
 func enemy_works(_delta):
-	if framer[0] > [241,181,121][randi()%3]:
+	if framer[0] > [241,181,121][randi()%3]: 
 		framer[0] = 0
 		framer[1] = (randi() %3)
 	else: framer[0] += 1
 	var e = $Enemy.position
-	if e.x < -4 : e.x = 36
-	elif e.x > 36: e.x = -4
-	"""
-	var d = Vector2(p.x - e.x, p.y - e.y)
-	var h = sqrt(d.x*d.x+d.y*d.y)
-	d.x /= h
-	d.y /= h
-	"""
-	if framer[1] == 0: e.x += -96*_delta
-	elif framer[1] == 1: e.x += +96*_delta
-	elif framer[1] == 2: e.x += 0
+	if framer[1] == 0: e.x += -96*_delta; elif framer[1] == 1: e.x += +96*_delta; elif framer[1] == 2: e.x += 0
+	if e.x != $Enemy.position.x: $Enemy.animation = "walk"
+	else: $Enemy.animation = "idle"
+	$Enemy.flip_h = bool($Enemy.position.x-e.x < 0)
+	if e.x < -4 : e.x = 36; elif e.x > 36: e.x = -4
 	$Enemy.position.x = e.x
 
 func update_player(_delta):
@@ -77,7 +72,6 @@ func update_bullet(_delta):
 			add_child(bullets[-1])
 	for n in bullets:
 		n.position = Vector2(n.position.x, n.position.y-128*_delta)
-		if n.position.y < 8: n.animation = "boom"
-		if n.position.y < 0:
+		if n.position.y < 8:
 			bullets.erase(n)
 			n.queue_free()
