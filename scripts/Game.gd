@@ -2,18 +2,22 @@
 ## Name: vechten   ##
 ## Author: @whmsft ##
 ## version: v1b3   ##
-## commit: 21      ##
+## commit: 22      ##
 #####################
 
 extends Node2D
+
+# variables for internal mechanics
 var FPS = 0
 var SCREEN = Vector2(0,0)
 var MOUSE = Vector2()
-var bullets = []
-
 var timer = 0
 var timer_limit = 0.2
 var framer = [0,0]
+
+# variables related to game
+var SCORE = 0
+var bullets = []
 
 func _ready():
 	SCREEN.x = get_viewport().get_visible_rect().size.x
@@ -29,13 +33,13 @@ func _ready():
 
 func _process(_delta):
 	FPS = Engine.get_frames_per_second()
-	$FPS_label.text = "FPS:"+str(FPS)
+	$FPS_label.text = "Score:"+str(SCORE)
 	MOUSE = get_global_mouse_position()
 	update_player(_delta)
-	enemy_works(_delta)
+	update_enemy(_delta)
 	update_bullet(_delta)
 
-func enemy_works(_delta):
+func update_enemy(_delta):
 	if framer[0] > [241,181,121][randi()%3]: 
 		framer[0] = 0
 		framer[1] = (randi() %3)
@@ -73,5 +77,9 @@ func update_bullet(_delta):
 	for n in bullets:
 		n.position = Vector2(n.position.x, n.position.y-128*_delta)
 		if n.position.y < 8:
+			bullets.erase(n)
+			n.queue_free()
+		if (n.position.x > $Enemy.position.x and n.position.x < $Enemy.position.x + 8) and (n.position.y > 4 and n.position.y < 12):
+			SCORE += 1
 			bullets.erase(n)
 			n.queue_free()

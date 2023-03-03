@@ -1,3 +1,5 @@
 ﻿This file houses changes made on the latest commit.
 
-1. added enemy animations
+1. Added Bullet collision with Enemy
+2. A Score variable
+3. Added background Music
