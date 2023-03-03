@@ -2,7 +2,7 @@
 ## Name: vechten   ##
 ## Author: @whmsft ##
 ## version: v1b3   ##
-## commit: 22      ##
+## commit: 23      ##
 #####################
 
 extends Node2D
@@ -40,10 +40,10 @@ func _process(_delta):
 	update_bullet(_delta)
 
 func update_enemy(_delta):
-	if framer[0] > [241,181,121][randi()%3]: 
+	if framer[0] > [0.5, 1, 1.5][randi()%3]: 
 		framer[0] = 0
 		framer[1] = (randi() %3)
-	else: framer[0] += 1
+	else: framer[0] += _delta
 	var e = $Enemy.position
 	if framer[1] == 0: e.x += -96*_delta; elif framer[1] == 1: e.x += +96*_delta; elif framer[1] == 2: e.x += 0
 	if e.x != $Enemy.position.x: $Enemy.animation = "walk"
@@ -79,7 +79,14 @@ func update_bullet(_delta):
 		if n.position.y < 8:
 			bullets.erase(n)
 			n.queue_free()
-		if (n.position.x > $Enemy.position.x and n.position.x < $Enemy.position.x + 8) and (n.position.y > 4 and n.position.y < 12):
+		if collision([n.position.x, n.position.y, 8, 4], [$Enemy.position.x, $Enemy.position.y, 8, 8]):
 			SCORE += 1
 			bullets.erase(n)
 			n.queue_free()
+
+# https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+func collision(hitbox, hitbox2):
+	return (hitbox[0] < hitbox2[0] + hitbox2[2] and
+			hitbox[0] + hitbox[2] > hitbox2[0] and
+			hitbox[1] < hitbox2[1] + hitbox2[3] and
+			hitbox[1] + hitbox[3] > hitbox2[1])
