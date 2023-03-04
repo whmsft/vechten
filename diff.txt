@@ -1,6 +1,7 @@
 ﻿This file houses changes made on the latest commit.
 
-1. Game, for now just freezes (purposely) after "game over"
-2. $EnemyBullet deletes on right spot...
+1. Display LIVES variable in another Label
+2. Edited that quit on game over to touch screen to replay.
+3. Shifted Enemy to match position
 
 $PLEASE_NOTE.println("After some more addings, I'll try to separate the Huge Game.gd file.")

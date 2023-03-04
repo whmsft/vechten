@@ -95,7 +95,6 @@ offset = Vector2( 4, 4 )
 scale = Vector2( 1.01563, 1 )
 frames = SubResource( 2 )
 animation = "fire"
-frame = 1
 playing = true
 offset = Vector2( 2, 4 )
 
@@ -106,11 +105,21 @@ playing = true
 offset = Vector2( 2, 4 )
 flip_v = true
 
-[node name="General_label" type="Label" parent="."]
-margin_right = 29.0
-margin_bottom = 5.0
+[node name="ScoreLabel" type="Label" parent="."]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 30.0
+margin_bottom = 7.0
 theme = SubResource( 3 )
 text = "Score: "
+
+[node name="LivesLabel" type="Label" parent="."]
+margin_left = 1.0
+margin_top = 5.0
+margin_right = 30.0
+margin_bottom = 12.0
+theme = SubResource( 3 )
+text = "Lives: "
 
 [node name="btn_left" type="TouchScreenButton" parent="."]
 normal = ExtResource( 5 )
@@ -126,4 +135,3 @@ pressed = ExtResource( 7 )
 
 [node name="Background_music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 17 )
-autoplay = true
