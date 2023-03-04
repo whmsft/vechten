@@ -1,8 +1,8 @@
 #####################
 ## Name: vechten   ##
 ## Author: @whmsft ##
-## version: v1b3   ##
-## commit: 23      ##
+## version: v1b4   ##
+## commit: 24      ##
 #####################
 
 extends Node2D
@@ -38,11 +38,12 @@ func _ready():
 func _process(_delta):
 	FPS = Engine.get_frames_per_second()
 	MOUSE = get_global_mouse_position()
-	$General_label.text = "Score:"+str(SCORE)
-	update_player(_delta)
-	update_enemy(_delta)
-	update_pbullet(_delta)
-	update_ebullet(_delta)
+	if !(LIVES < 0):
+		$General_label.text = "Score:"+str(SCORE)
+		update_player(_delta)
+		update_enemy(_delta)
+		update_pbullet(_delta)
+		update_ebullet(_delta)
 
 func update_enemy(_delta):
 	# A try to make enemy perform random tasks for [0.5, 1, 1.5] secs.
@@ -111,12 +112,12 @@ func update_pbullet(_delta):
 func update_ebullet(_delta):
 	for n in enemy_bullets:
 		n.position = Vector2(n.position.x, n.position.y+128*_delta)
-		if n.position.y > SCREEN.y-8:
+		if n.position.y > SCREEN.y-12:
 			enemy_bullets.erase(n)
 			n.queue_free()
 		if collision([n.position.x, n.position.y, 8, 4], [$Player.position.x, $Player.position.y, 8, 8]):
 			LIVES += -1
-			if LIVES < 0: get_tree().quit()
+			$General_label.text = "Click to continue"
 			enemy_bullets.erase(n)
 			n.queue_free()
 

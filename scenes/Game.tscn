@@ -95,6 +95,7 @@ offset = Vector2( 4, 4 )
 scale = Vector2( 1.01563, 1 )
 frames = SubResource( 2 )
 animation = "fire"
+frame = 1
 playing = true
 offset = Vector2( 2, 4 )
 
@@ -103,6 +104,7 @@ frames = SubResource( 7 )
 animation = "fire"
 playing = true
 offset = Vector2( 2, 4 )
+flip_v = true
 
 [node name="General_label" type="Label" parent="."]
 margin_right = 29.0
